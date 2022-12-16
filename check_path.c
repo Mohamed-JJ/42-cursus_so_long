@@ -6,7 +6,7 @@
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 17:17:23 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/16 20:17:41 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/16 22:35:01 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,15 @@ int	main(int ac, char **av)
 		write (1, "there is no valid path", 23);
 	else
 		write (1, "there is a valid path", 22);
+	int r = get_arr_len(arr);
+	while (r >= 0)
+	{
+		free(arr[r]);
+		free(str[r]);
+		r--;
+	}
+	free(arr);
+	free(str);
+	while (1);
 	return (0);
 }
