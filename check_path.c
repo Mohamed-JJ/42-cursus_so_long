@@ -6,7 +6,7 @@
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 17:17:23 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/16 15:41:54 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/16 20:17:41 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,29 @@ int	canMove(char **v, int x, int y)
 	return (0);
 }
 
-int	find_path(char **v, int x, int y, char c)
+int	find_path(char **v, int x, int y)
 {
-	if (v[y][x] == c)
-		return (1);
+	static int e;
+	static int c;
+	for (int i = 0; i < get_arr_len(v); i++) {
+		printf("%s\n", v[i]);
+	}
+	printf("\n");
+	if (v[y][x] == 'E')
+		e++;
+	if (v[y][x] == 'C')
+		c++;
 	v[y][x] = '1';
-	if (canMove(v, x + 1, y) && find_path(v, x + 1, y, c))
-		return (1);
-	if (canMove(v, x - 1, y) && find_path(v, x - 1, y, c))
-		return (1);
-	if (canMove(v, x, y + 1) && find_path(v, x, y + 1, c))
-		return (1);
-	if (canMove(v, x, y - 1) && find_path(v, x, y - 1, c))
-		return (1);
-	v[y][x] = '0';
+	if (canMove(v, x - 1, y)) 
+		find_path(v, x - 1, y);
+	if (canMove(v, x, y + 1))
+		find_path(v, x, y + 1);
+	if (canMove(v, x + 1, y))
+		find_path(v, x + 1, y);
+	if (canMove(v, x, y - 1)) 
+		find_path(v, x, y - 1);
+	if (e > 0  && c == 2)
+		return 1;
 	return (0);
 }
 
@@ -104,7 +113,7 @@ int	main(int ac, char **av)
 	str = ft_split(get_next_line(fd), '\n');
 	arr = back_tracking_tin(str);
 	get_player_pos(arr, &p_x, &p_y);
-	if (find_path(arr, p_x, p_y, 'E') != 1)
+	if (find_path(arr, p_x, p_y) != 1)
 		write (1, "there is no valid path", 23);
 	else
 		write (1, "there is a valid path", 22);

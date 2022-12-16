@@ -6,7 +6,7 @@
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:28:44 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/13 16:18:17 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/16 19:29:29 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	check_coins(char **str)
 	return (0);
 }
 
-void	draw_down(t_mlx *v)
+void	draw_down(t_mlx *v,int *moves)
 {
 	if (v->arr[v->p_i][v->p_j] == 'P')
 	{
@@ -54,11 +54,14 @@ void	draw_down(t_mlx *v)
 			v->arr[v->p_i][v->p_j] = '0';
 			v->p_i++;
 			v->arr[v->p_i][v->p_j] = 'P';
+			*moves += 1;
+			ft_putnbr(*moves);
+			ft_putstr("\n");
 		}
 	}
 }
 
-void	draw_up(t_mlx *v)
+void	draw_up(t_mlx *v,int *moves)
 {
 	if (v->arr[v->p_i][v->p_j] == 'P')
 	{
@@ -76,11 +79,14 @@ void	draw_up(t_mlx *v)
 			v->arr[v->p_i][v->p_j] = '0';
 			v->p_i--;
 			v->arr[v->p_i][v->p_j] = 'P';
+			*moves += 1;
+			ft_putnbr(*moves);
+			ft_putstr("\n");
 		}
 	}
 }
 
-void	draw_left(t_mlx *v)
+void	draw_left(t_mlx *v,int *moves)
 {
 	if (v->arr[v->p_i][v->p_j] == 'P')
 	{
@@ -98,11 +104,14 @@ void	draw_left(t_mlx *v)
 			v->arr[v->p_i][v->p_j] = '0';
 			v->p_j--;
 			v->arr[v->p_i][v->p_j] = 'P';
+			*moves += 1;
+			ft_putnbr(*moves);
+			ft_putstr("\n");
 		}
 	}
 }
 
-void	draw_right(t_mlx *v)
+void	draw_right(t_mlx *v,int *moves)
 {
 	if (v->arr[v->p_i][v->p_j] == 'P')
 	{
@@ -120,6 +129,9 @@ void	draw_right(t_mlx *v)
 			v->arr[v->p_i][v->p_j] = '0';
 			v->p_j++;
 			v->arr[v->p_i][v->p_j] = 'P';
+			*moves += 1;
+			ft_putnbr(*moves);
+			ft_putstr("\n");
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:18:28 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/13 19:22:27 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/16 19:28:10 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int		check_len(char **v);
 int		check_wall(char **v);
 int		check_p_e(t_mlx *v);
 int		check_f_l(char **v);
-// int		check_coins(t_mlx *v);
 
 // outputting functions
 
@@ -67,14 +66,17 @@ void	ft_putstr(char *str);
 // drawing functions 
 
 int		draw_map(t_mlx *v);
-void	draw_up(t_mlx *v);
-void	draw_down(t_mlx *v);
-void	draw_left(t_mlx *v);
-void	draw_right(t_mlx *v);
+void	draw_up(t_mlx *v, int *moves);
+void	draw_down(t_mlx *v, int *moves);
+void	draw_left(t_mlx *v, int *moves);
+void	draw_right(t_mlx *v, int *moves);
 int		check_key_and_print(int key, void *param);
 
 // to check path
 char	ft_get_pos(char **t, int x, int y);
 int		ft_search_char(char **t, int x, int y, char n);
+
+// helping func
+int		get_arr_len(char **str);
 
 #endif
