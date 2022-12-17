@@ -6,37 +6,13 @@
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:28:44 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/16 19:29:29 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/17 19:39:33 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	check_coins(char **str)
-{
-	int	j;
-	int	i;
-	int	x;
-
-	i = 0;
-	j = 0;
-	while (str[i])
-	{
-		x = 0;
-		while (str[i][x])
-		{
-			if (str[i][x] == 'C')
-				j++;
-			x++;
-		}
-		i++;
-	}
-	if (j == 0)
-		return (1);
-	return (0);
-}
-
-void	draw_down(t_mlx *v,int *moves)
+void	draw_down(t_mlx *v, int *moves)
 {
 	if (v->arr[v->p_i][v->p_j] == 'P')
 	{
@@ -61,7 +37,7 @@ void	draw_down(t_mlx *v,int *moves)
 	}
 }
 
-void	draw_up(t_mlx *v,int *moves)
+void	draw_up(t_mlx *v, int *moves)
 {
 	if (v->arr[v->p_i][v->p_j] == 'P')
 	{
@@ -86,7 +62,7 @@ void	draw_up(t_mlx *v,int *moves)
 	}
 }
 
-void	draw_left(t_mlx *v,int *moves)
+void	draw_left(t_mlx *v, int *moves)
 {
 	if (v->arr[v->p_i][v->p_j] == 'P')
 	{
@@ -111,7 +87,7 @@ void	draw_left(t_mlx *v,int *moves)
 	}
 }
 
-void	draw_right(t_mlx *v,int *moves)
+void	draw_right(t_mlx *v, int *moves)
 {
 	if (v->arr[v->p_i][v->p_j] == 'P')
 	{

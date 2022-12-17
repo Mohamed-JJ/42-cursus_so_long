@@ -6,23 +6,13 @@
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 17:17:23 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/16 22:35:01 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/17 22:15:57 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	get_arr_len(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-int	canMove(char **v, int x, int y)
+int	can_it_move(char **v, int x, int y)
 {
 	int	x_len;
 	int	y_len;
@@ -34,56 +24,37 @@ int	canMove(char **v, int x, int y)
 	return (0);
 }
 
-int	find_path(char **v, int x, int y)
+int	find_path(char **v, int x, int y, int coins)
 {
-	static int e;
-	static int c;
-	for (int i = 0; i < get_arr_len(v); i++) {
-		printf("%s\n", v[i]);
-	}
-	printf("\n");
+	static int	e;
+	static int	c;
+
 	if (v[y][x] == 'E')
 		e++;
 	if (v[y][x] == 'C')
 		c++;
 	v[y][x] = '1';
-	if (canMove(v, x - 1, y)) 
-		find_path(v, x - 1, y);
-	if (canMove(v, x, y + 1))
-		find_path(v, x, y + 1);
-	if (canMove(v, x + 1, y))
-		find_path(v, x + 1, y);
-	if (canMove(v, x, y - 1)) 
-		find_path(v, x, y - 1);
-	if (e > 0  && c == 2)
-		return 1;
+	if (can_it_move(v, x - 1, y))
+		find_path(v, x - 1, y, coins);
+	if (can_it_move(v, x, y + 1))
+		find_path(v, x, y + 1, coins);
+	if (can_it_move(v, x + 1, y))
+		find_path(v, x + 1, y, coins);
+	if (can_it_move(v, x, y - 1))
+		find_path(v, x, y - 1, coins);
+	if (e > 0 && c == coins)
+		return (1);
 	return (0);
 }
 
-char	**back_tracking_tin(char **v)
-{
-	int		i;
-	int		j;
-	char	**str;
-
-	j = 0;
-	i = 0;
-	str = malloc(sizeof(char *) * (get_arr_len(v) + 1));
-	while (v[i])
-	{
-		str[i] = ft_strdup(v[i]);
-		i++;
-	}
-	str[i] = NULL;
-	return (str);
-}
-
-void	get_player_pos(char **str, int *x, int *y)
+int	get_player_pos(char **str, int *x, int *y)
 {
 	int	i;
 	int	j;
+	int	coins;
 
 	i = 0;
+	coins = 0;
 	while (str[i])
 	{
 		j = 0;
@@ -93,39 +64,31 @@ void	get_player_pos(char **str, int *x, int *y)
 			{
 				*y = i;
 				*x = j;
-				break ;
-			}	
+			}
+			if (str[i][j] == 'C')
+				coins ++;
 			j++;
 		}
 		i++;
 	}
+	return (coins);
 }
 
-int	main(int ac, char **av)
+int	back_tracking(t_mlx *v)
 {
-	int		fd;
 	char	**str;
-	char	**arr;
-	int		p_x;
-	int		p_y;
+	int		x_p;
+	int		y_p;
 
-	fd = open(av[1], O_RDWR);
-	str = ft_split(get_next_line(fd), '\n');
-	arr = back_tracking_tin(str);
-	get_player_pos(arr, &p_x, &p_y);
-	if (find_path(arr, p_x, p_y) != 1)
-		write (1, "there is no valid path", 23);
-	else
-		write (1, "there is a valid path", 22);
-	int r = get_arr_len(arr);
-	while (r >= 0)
+	str = allocate_clone(v->arr);
+	if (!str)
+		return (0);
+	v->coins = get_player_pos(str, &x_p, &y_p);
+	if (find_path(str, x_p, y_p, v->coins) == 1)
 	{
-		free(arr[r]);
-		free(str[r]);
-		r--;
+		free_arr(str);
+		return (1);
 	}
-	free(arr);
-	free(str);
-	while (1);
+	free_arr(str);
 	return (0);
 }

@@ -6,11 +6,24 @@
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:28:16 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/10 20:38:35 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/17 22:19:45 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	free_arr(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
 
 size_t	ft_strlen(char *str)
 {

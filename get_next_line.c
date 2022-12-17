@@ -6,11 +6,35 @@
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:23:46 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/02 18:37:25 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/17 19:39:50 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	check_coins(char **str)
+{
+	int	j;
+	int	i;
+	int	x;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		x = 0;
+		while (str[i][x])
+		{
+			if (str[i][x] == 'C')
+				j++;
+			x++;
+		}
+		i++;
+	}
+	if (j == 0)
+		return (1);
+	return (0);
+}
 
 char	*print_them_lines(char *save)
 {

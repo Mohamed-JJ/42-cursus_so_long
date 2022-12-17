@@ -6,7 +6,7 @@
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:03:42 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/16 19:31:40 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/17 19:05:14 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	check_key_and_print(int key, void *param)
 	t_mlx		*v;
 
 	v = (t_mlx *)param;
-	if (key == 53)
+	if (key == 53 || key == 17)
 	{
 		ft_putstr("game has eneded");
 		exit (0);

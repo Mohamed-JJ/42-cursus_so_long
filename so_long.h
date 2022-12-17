@@ -6,7 +6,7 @@
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:18:28 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/16 19:28:10 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/17 22:18:31 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct l_mlx
 	int				height;
 }				t_mlx;
 
-
 char	**ft_split(char *str, char c);
 char	*ft_substr(char *str, unsigned int start, unsigned int len);
 char	*ft_strdup(char *str);
@@ -73,10 +72,15 @@ void	draw_right(t_mlx *v, int *moves);
 int		check_key_and_print(int key, void *param);
 
 // to check path
-char	ft_get_pos(char **t, int x, int y);
-int		ft_search_char(char **t, int x, int y, char n);
+int		get_player_pos(char **str, int *x, int *y);
 
 // helping func
 int		get_arr_len(char **str);
+char	**allocate_clone(char **v);
+int		check_coins(char **str);
+void	free_arr(char **str);
+
+// backtracking func
+int		back_tracking(t_mlx *v);
 
 #endif

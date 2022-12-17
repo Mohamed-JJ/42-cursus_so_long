@@ -6,7 +6,7 @@
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:03:28 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/16 16:36:54 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/17 22:10:12 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,22 @@ int	get_arr_len(char **str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+char	**allocate_clone(char **v)
+{
+	int		i;
+	int		j;
+	char	**str;
+
+	j = 0;
+	i = 0;
+	str = malloc(sizeof(char *) * (get_arr_len(v) + 1));
+	while (v[i])
+	{
+		str[i] = ft_strdup(v[i]);
+		i++;
+	}
+	str[i] = NULL;
+	return (str);
 }

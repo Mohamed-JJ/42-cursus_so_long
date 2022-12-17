@@ -6,7 +6,7 @@
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 20:53:16 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/13 14:33:17 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/17 21:07:13 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	draw_things(t_mlx *v, char c)
 	else if (c == 'E')
 	{
 		v->img = mlx_xpm_file_to_image(v->mlx,
-				"./r/exit2.xpm", &v->width, &v->height);
+				"./r/exit.xpm", &v->width, &v->height);
 		mlx_put_image_to_window(v->mlx, v->win, v->img, v->y, v->x);
 	}
 }
