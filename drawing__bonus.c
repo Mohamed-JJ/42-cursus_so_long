@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawing.c                                          :+:      :+:    :+:   */
+/*   drawing__bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 20:53:16 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/18 12:14:57 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/18 21:13:46 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long__bonus.h"
 
 void	draw_player(t_mlx *v)
 {
@@ -25,6 +25,12 @@ void	draw_things(t_mlx *v, char c)
 	{
 		v->img = mlx_xpm_file_to_image(v->mlx,
 				"./r/wall.xpm", &v->width, &v->height);
+		mlx_put_image_to_window(v->mlx, v->win, v->img, v->y, v->x);
+	}
+	else if (c == 'A')
+	{
+		v->img = mlx_xpm_file_to_image(v->mlx,
+				"./r/enemy.xpm", &v->width, &v->height);
 		mlx_put_image_to_window(v->mlx, v->win, v->img, v->y, v->x);
 	}
 	else if (c == 'C')

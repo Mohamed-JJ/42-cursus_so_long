@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helping.c                                          :+:      :+:    :+:   */
+/*   helping__bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:03:28 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/18 15:45:48 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/18 21:14:19 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long__bonus.h"
 
 void	ft_putchar(char c)
 {
@@ -61,8 +61,6 @@ char	**allocate_clone(char **v)
 	j = 0;
 	i = 0;
 	str = malloc(sizeof(char *) * (get_arr_len(v) + 1));
-	if (!str)
-		return (0);
 	while (v[i])
 	{
 		str[i] = ft_strdup(v[i]);

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moving.c                                           :+:      :+:    :+:   */
+/*   moving__bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjarboua <mjarboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:03:42 by mjarboua          #+#    #+#             */
-/*   Updated: 2022/12/18 15:04:27 by mjarboua         ###   ########.fr       */
+/*   Updated: 2022/12/18 21:14:36 by mjarboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long__bonus.h"
 
 int	get_player(char **str)
 {
@@ -47,7 +47,7 @@ int	check_key_and_print(int key, void *param)
 	t_mlx		*v;
 
 	v = (t_mlx *)param;
-	if (key == 53)
+	if (key == 53 || key == 17)
 	{
 		ft_putstr("game has eneded");
 		exit (0);
